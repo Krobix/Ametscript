@@ -1,0 +1,21 @@
+//Concept of the language
+import console;
+
+module functions{
+
+int func myFunc(){
+console.print("Hello, World!");
+return 0;
+}
+//Indentation does not matter
+
+point func myOtherFunc(string coolString){
+//Returns a pointer(point) to the specified return value
+return coolString;
+}
+}
+
+int func main(){
+functions.myFunc();
+functions.myOtherFunc("hello");
+}
