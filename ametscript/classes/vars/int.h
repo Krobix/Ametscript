@@ -1,4 +1,5 @@
-
+#ifndef INT_H
+#define INT_H
 
 class aint{
 private: 
@@ -22,3 +23,6 @@ class restrictedInt:public aint{
 public:
   restrictedInt(int value);
 };
+
+
+#endif
