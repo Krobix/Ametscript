@@ -1,4 +1,4 @@
 # Ametscript
-A statically typed programming language written in C++
+A statically typed object oriented programming language written in C++
 
 (still being worked on).
