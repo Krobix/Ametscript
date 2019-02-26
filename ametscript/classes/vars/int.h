@@ -21,4 +21,4 @@ public:
 class restrictedInt:public aint{
 public:
   restrictedInt(int value);
-}
+};
