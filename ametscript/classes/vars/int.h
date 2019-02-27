@@ -1,7 +1,8 @@
 #ifndef INT_H
 #define INT_H
+#include "object.h"
 
-class aint{
+class aint:public object{
 private: 
   int value;
   int maxval;
