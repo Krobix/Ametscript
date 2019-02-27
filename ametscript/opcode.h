@@ -1,5 +1,5 @@
-#ifndef BYTECODE_H
-#define BYTECODE_H
+#ifndef OPCODE_H
+#define OPCODE_H
 
 unsigned char opcodes[] = {
   0x00,
