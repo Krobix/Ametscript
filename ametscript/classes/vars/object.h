@@ -6,6 +6,8 @@ struct object{
 protected:
   bool isConst;
   std::string name;
+public:
+  object(std::string name, bool con);
 };
 
 
