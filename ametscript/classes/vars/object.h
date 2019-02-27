@@ -8,6 +8,7 @@ protected:
   std::string name;
 public:
   object(std::string name, bool con);
+  object();
 };
 
 
