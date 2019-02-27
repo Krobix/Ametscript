@@ -1,4 +1,5 @@
 //Concept of the language
+//The goal is to have this working in the future
 import console;
 
 module functions{
