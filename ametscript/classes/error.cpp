@@ -1,7 +1,7 @@
 #include "error.h"
 
 error::error(std::string id){
-  this->id = id;
+  this->name = id;
 }
 void error::raise(std::string callback, std::string msg){
   std::cout << this->id << ":\n";
