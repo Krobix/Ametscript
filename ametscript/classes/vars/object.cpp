@@ -1,8 +1,8 @@
 #include "object.h"
 
-object::object(std::string name, bool isConst){
+object::object(std::string name, bool con){
   this->name = name;
-  this->isConst = isConst;
+  this->isConst = con;
 }
 object::object(){
   this->name = "__obj__";
