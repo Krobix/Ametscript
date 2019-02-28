@@ -14,10 +14,10 @@ enum ops{
     IMPORT_MOD,//0x07
     CREATE_MOD,//0x08
     
-    BIN_ADD,   //0xAA
-    BIN_SUBTRACT,//0xAB
-    BIN_MULT,//0xAC
-    BIN_DIV,//0xAD
+    BIN_ADD = 160,   //0xA0
+    BIN_SUBTRACT = 161,//0xA1
+    BIN_MULT = 162,//0xA2
+    BIN_DIV = 163,//0xA3
     
     
  };
