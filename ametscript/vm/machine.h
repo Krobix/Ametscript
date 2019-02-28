@@ -1,7 +1,7 @@
 #ifndef MACHINE_H
 #define MACHINE_H
 #include "opcode.h"
-#include "../classes/vars/object.h"
+#include "../classes/vars/dict.h"
 
 
 enum ops{
@@ -14,6 +14,7 @@ enum ops{
     CALL_FUNC, //0x06
     IMPORT_MOD,//0x07
     CREATE_MOD,//0x08
+    LOAD_NS,//0x09
     
     //Mathematical Operations
     BIN_ADD = 160,   //0xA0
@@ -22,10 +23,11 @@ enum ops{
     BIN_DIV = 163,//0xA3
     CMP_EQUAL = 164,//0xA4
     CMP_LESS = 165,//0xA5
-    CMP_GREAT = 166//0xA6
+    CMP_GREAT = 166,//0xA6
+    RAND_GEN = 167,//0xA7
+     
     
-    
- };
+  };
 
 class machine{
 private:
