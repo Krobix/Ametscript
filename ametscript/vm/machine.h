@@ -13,7 +13,7 @@ public:
     CALL_FUNC,
     IMPORT_MOD
     
-  }
+  };
 };
 
 #endif
