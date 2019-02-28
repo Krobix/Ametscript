@@ -31,6 +31,8 @@ enum ops{
 
 class machine{
 private:
+    unsigned char startByte[] = {0x00};
+    std::vector<
      
 };
 
