@@ -10,6 +10,7 @@ protected:
 public:
   object(std::string name, bool con);
   object();
+  object(object obj);
 };
 
 
