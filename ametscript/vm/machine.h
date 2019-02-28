@@ -2,6 +2,7 @@
 #define MACHINE_H
 #include "opcode.h"
 #include "../classes/vars/dict.h"
+#include "../classes/vars/object.h"
 
 
 enum ops{
@@ -15,6 +16,8 @@ enum ops{
     IMPORT_MOD,//0x07
     CREATE_MOD,//0x08
     LOAD_NS,//0x09
+    INTSTORE,//0x0A
+    STRSTORE,//0x0B
     
     //Mathematical Operations
     BIN_ADD = 160,   //0xA0
@@ -32,7 +35,10 @@ enum ops{
 class machine{
 private:
     unsigned char startByte[] = {0x00};
-    std::vector<
+    std::vector<dictKey> mainNs;
+public:
+    object *execStatement(std::string statement);
+    machine();
      
 };
 
