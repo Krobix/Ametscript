@@ -7,7 +7,7 @@ private:
   object *key;
   object *value;
 public:
-  
+  dictKey(object key, object value);  
 };
 
 class dict:public object{
