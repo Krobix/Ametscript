@@ -1,9 +1,9 @@
 #ifndef MACHINE_H
 #define MACHINE_H
+#include "opcode.h"
 
-class machine{
-public:
-  enum ops{
+
+enum ops{
     LOAD_MAIN, //0x00
     EXIT_MAIN, //0x01
     NEW_OBJ,   //0x02
@@ -18,7 +18,7 @@ public:
     BIN_MULT,
     BIN_DIV
     
-  };
-};
+ };
+
 
 #endif
