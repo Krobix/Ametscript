@@ -4,6 +4,9 @@
 
 class dictKey:public object{
 private:
+  object *key;
+  object *value;
+public:
   
 };
 
