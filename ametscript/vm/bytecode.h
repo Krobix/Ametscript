@@ -19,4 +19,14 @@ unsigned char opcodes[] = {
   0xA6
 };
 
+unsigned char machinevals[] = {
+  0xD0,
+  0xD1,
+  0xD2,
+  0xD3,
+  0xD4,
+  0xD5,
+  0xD6
+};
+
 #endif
