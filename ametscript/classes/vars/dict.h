@@ -4,13 +4,14 @@
 
 class dictKey:public object{
 private:
-  object *key;
+  std::string *key;
   object *value;
 public:
   dictKey(object key, object value);  
 };
 
 class dict:public object{
+  
 };
 
 #endif
