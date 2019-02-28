@@ -2,4 +2,5 @@
 
 Bytecode | Name | Description
 -------- | ---- | -----------
-0x00 | 
+0x00 | LOAD_CORE | Loads up the interpreter and prepares all of the bytecode
+0x01 | EXIT_CORE | Successfully exits the interpreter
