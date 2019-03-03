@@ -5,3 +5,5 @@
 object *machine::execStatement(std::string statement){
   
 }
+machine::machine(){
+}
