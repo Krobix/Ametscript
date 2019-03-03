@@ -18,6 +18,11 @@ enum ops{
     LOAD_NS,//0x09
     INTSTORE,//0x0A
     STRSTORE,//0x0B
+    ARRSTORE,//0x0C
+    ARRADD,//0x0D
+    ARRDEL,//0x0E
+    ARRVOID,//0x0F
+    
     
     //Mathematical Operations
     BIN_ADD = 160,   //0xA0
