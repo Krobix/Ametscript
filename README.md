@@ -1,5 +1,5 @@
 # Ametscript
-A statically typed object oriented programming language written in C++
+A statically typed object oriented programming language written in python (restarting)
 
 (still being worked on).
 
