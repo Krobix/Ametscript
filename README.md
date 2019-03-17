@@ -8,7 +8,7 @@ FEATURES:
 - [ ] interpreter
 - [ ] functions
 - [ ] classes 
-- [ ] C++ api
+- [ ] python api
 - [ ] modules
 - [ ] standard library
 - [ ] basic syntax
