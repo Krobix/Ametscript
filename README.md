@@ -12,3 +12,8 @@ FEATURES:
 - [ ] modules
 - [ ] standard library
 - [ ] basic syntax
+
+Try It!
+
+Run interpreter.py, then run the following:
+```string var x = "Hello, World!"```
