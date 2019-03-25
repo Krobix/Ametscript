@@ -85,7 +85,7 @@ def exec_line(inp):
 	global ln
 	lineLen = len(inp) - 1
 	if len(inp) == 0:
-		pass
+		return None
 	elif inp[0] in typeKeywords:
 			if inp[1] == "var":
 				defVar(inp, variables["__CTX__"])
