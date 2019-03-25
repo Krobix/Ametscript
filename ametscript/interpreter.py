@@ -84,7 +84,9 @@ def defVar(inp, context):
 def exec_line(inp):
 	global ln
 	lineLen = len(inp) - 1
-	if inp[0] in typeKeywords:
+	if len(inp) == 0:
+		pass
+	elif inp[0] in typeKeywords:
 			if inp[1] == "var":
 				defVar(inp, variables["__CTX__"])
 	elif inp[0] == "import":
@@ -96,7 +98,7 @@ def exec_line(inp):
 				content = f.read()
 				content = content.split(";")
 				for x in content:
-					ln = ln + 1
+					ln = str(int(str(ln).split(" ")[0]) + 1) + " in " + importedFile
 					x = list(x)
 					if "\n" in x:
 						x.remove("\n")
@@ -104,7 +106,10 @@ def exec_line(inp):
 				ln = 0
 		except FileNotFoundError:
 			abuiltins.ImportErr.aRaise("The module " + inp[1] + " does not exist.", ln)
-						
+	elif inp[0] == "\n" or inp[0] == " " or inp[0] == "":
+		inp.remove(inp[0])
+		exec_line(inp)					
+	
 	else:
 		abuiltins.SyntaxErr.aRaise("Invalid Syntax", ln)
 
