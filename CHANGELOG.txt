@@ -1,5 +1,0 @@
-0.0.1- Started addding lexing / parsing functions
-
-0.0.2-0.2.0- Added support for defining string variables ONLY
-
-0.2.1- Added errors/exceptions
