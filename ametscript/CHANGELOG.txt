@@ -1,7 +1,9 @@
 0.0.1- Started addding lexing / parsing functions
 
 0.0.2-0.2.0- Added support for defining string variables ONLY
-
 0.2.1- Added errors/exceptions
 
 0.3.0- Added basic Importing of Modules
+
+0.4.0- Added "stream" type that can temporarily be used to print value to the screen via variable "stdout"
+0.4.1-Rewrote variable defining to be slightly better

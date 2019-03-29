@@ -5,17 +5,22 @@ import sys
 import traceback
 import ametconfig as config
 import pathlib
+import threading
 
-version = "0.3.0"
+version = "0.4.1"
+
+tmpValueGet = 0
 
 ln = 0
 
+lastLn = ""
+
 typeKeywords = [
-	"int",
+	"num",
 	"string",
 	"bool",
 	"point",
-	"float"]
+	"stream"]
 	
 declarationKeywords = [
 	"func",
@@ -28,7 +33,14 @@ declarationKeywords = [
 	
 quoteSymbols = ["'", '"']
 
-lastValue = ["", ""]
+lastValue = ["", "", ""]
+
+mathSymbols = ["+",
+	"-",
+	"/",
+	"*",
+	"**",
+]
 
 
 	
@@ -37,6 +49,15 @@ variables = {
 	"SyntaxError": abuiltins.SyntaxErr,
 	"InternalError": abuiltins.InternalErr,
 	"ImportError": abuiltins.ImportErr,
+	"true": classes.aBool.true,
+	"false": classes.aBool.false,
+	"TypeError": classes.TypeErr,
+	"NameError": abuiltins.NameErr,
+	"stdout": abuiltins.aStdout,
+}
+
+extTypes = {
+	"stream":abuiltins.defaultStream,
 }
 
 def copyList(list1, list2):
@@ -46,48 +67,48 @@ def copyList(list1, list2):
 		list2.append(list1[temp])
 		temp = temp + 1
 	return list2
-	
-def getValue(expr):
+			
+			
+def eval_expr(expr):
+	global variables, mathSymbols
+	for x in variables:
+		while "<" + x + ">" in expr:
+			expr = expr.replace("<" + variables[x].name + ">", "\"" + str(variables[x].value) + "\"") 
 	try:
-		return int(eval(expr))
-	except:
-		if expr in variables:
-			return variables[expr]
-		elif list(expr)[0] in quoteSymbols and list(expr)[len(list(expr)) - 1] == list(expr[0]):
-			for x in list(expr):
-				if quoteSymbols[0] == list(expr[list(expr).index(x)]) or quoteSymbols[1] == list(expr[list(expr).index(x)]):
-					temp = list(expr)
-					temp.remove(x)
-			return temp
-					
-				
-	
+		return eval(expr)
+	except SyntaxError:
+		abuiltins.SyntaxErr.aRaise("Invalid expression: " + expr, ln)
+	except NameError:
+		abuiltins.NameErr.aRaise("Unknown Variable referenced", ln)
+		 
 def defVar(inp, context):
 	ctx = context
-	newVal = list(inp[len(inp) - 1])
+	a = {}
+	exprStart = inp.index("=") + 1
 	if ctx.value == "main":
 		if len(inp) >= 3:
 			if not inp[0] in declarationKeywords + typeKeywords and inp[0] in variables:
-				newName = inp[0]
+				variables[inp[0]].value = eval_expr("".join(inp[exprStart:]))
+				return None
 			else:
 				equalsIndex = inp.index("=")
 				newName = inp[equalsIndex - 1]
-				if (quoteSymbols[1] in newVal or quoteSymbols[0] in newVal) and newVal[0] == newVal[len(newVal)-1]: 
-					variables[newName] = classes.aObject(newName, inp[len(inp) - 1], "BASE_OBJ")
-				elif inp[len(inp) - 1] in variables:
-					variables[newName] = classes.aObject(newName, variables[inp[len(inp) - 1]], "BASE_OBJ")
-		variables[newName] = classes.convertObject(variables[newName], inp[0])
+		expression = inp[exprStart:]
+		newVal = eval_expr(" ".join(expression)) 		
+		variables[newName] = classes.aObject(newName, newVal, "Object")
+		variables[newName] = classes.convertObject(variables[newName], inp[0], ln, attr=a)
 		lastValue[0] = newName
 		lastValue[1] = variables[newName].value
 				
 				
 def exec_line(inp):
-	global ln
+	global ln, lastLn
 	lineLen = len(inp) - 1
+	lastLn = " ".join(inp)
 	if len(inp) == 0:
 		return None
-	elif inp[0] in typeKeywords:
-			if inp[1] == "var":
+	elif inp[0] in typeKeywords or inp[0] in variables:
+			if inp[1] == "var" or inp[0] in variables:
 				defVar(inp, variables["__CTX__"])
 	elif inp[0] == "import":
 		importedFile = inp[1] + ".amts"
@@ -106,6 +127,8 @@ def exec_line(inp):
 				ln = 0
 		except FileNotFoundError:
 			abuiltins.ImportErr.aRaise("The module " + inp[1] + " does not exist.", ln)
+	elif "".join(inp).startswith("//"):
+		pass
 	elif inp[0] == "\n" or inp[0] == " " or inp[0] == "":
 		inp.remove(inp[0])
 		exec_line(inp)					
